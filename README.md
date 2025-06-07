@@ -6,7 +6,7 @@ Created by **Igor Warzocha** | [LinkedIn](https://www.linkedin.com/in/igorwarzoc
 
 ## ☕ Support This Project
 
-If this system helps you master Claude prompting, consider buying me a coffee!
+If this has helped you, consider buying me a coffee so I can finance my Opus credits!
 
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/K3K31G2HFS)
 
