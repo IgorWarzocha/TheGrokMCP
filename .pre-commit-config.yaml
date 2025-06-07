@@ -1,0 +1,70 @@
+repos:
+  - repo: local
+    hooks:
+      - id: check-imports
+        name: Check Python imports
+        entry: python -c "
+import ast
+import sys
+import pathlib
+
+def check_file(filepath):
+    with open(filepath, 'r') as f:
+        try:
+            tree = ast.parse(f.read())
+            for node in ast.walk(tree):
+                if isinstance(node, ast.ImportFrom):
+                    if node.module == 'grok_client' and 'src/' in str(filepath):
+                        print(f'❌ {filepath}: Use relative import: from .grok_client import')
+                        return False
+        except SyntaxError as e:
+            print(f'❌ {filepath}: Syntax error: {e}')
+            return False
+    return True
+
+files = [pathlib.Path(arg) for arg in sys.argv[1:] if arg.endswith('.py')]
+all_good = all(check_file(f) for f in files)
+sys.exit(0 if all_good else 1)
+        "
+        language: python
+        files: \.py$
+
+      - id: check-fastmcp-decorators
+        name: Check FastMCP decorator syntax
+        entry: python -c "
+import re
+import sys
+
+for filepath in sys.argv[1:]:
+    if filepath.endswith('.py'):
+        with open(filepath, 'r') as f:
+            content = f.read()
+            if re.search(r'@mcp\.(tool|resource|prompt)\s*\n', content):
+                print(f'❌ {filepath}: Use @mcp.tool() with parentheses')
+                sys.exit(1)
+print('✅ All FastMCP decorators are correctly formatted')
+        "
+        language: python
+        files: \.py$
+
+  - repo: https://github.com/psf/black
+    rev: 24.3.0
+    hooks:
+      - id: black
+        language_version: python3
+
+  - repo: https://github.com/charliermarsh/ruff-pre-commit
+    rev: v0.3.4
+    hooks:
+      - id: ruff
+        args: [--fix]
+
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.5.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-json
+      - id: check-added-large-files
+      - id: check-merge-conflict
