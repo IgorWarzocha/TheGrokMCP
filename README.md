@@ -2,6 +2,16 @@
 
 A production-ready Model Context Protocol (MCP) server for Grok AI models, built with FastMCP for clean, Pythonic implementation. Developed using my own [Superprompt System](https://github.com/IgorWarzocha/Claude-Superprompt-System)
 
+Created by **Igor Warzocha** | [LinkedIn](https://www.linkedin.com/in/igorwarzocha/) | [GitHub](https://github.com/IgorWarzocha/Claude-Superprompt-System)
+
+## ☕ Support This Project
+
+If this system helps you master Claude prompting, consider buying me a coffee!
+
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/K3K31G2HFS)
+
+Your support helps me create more AI optimization resources and keep this project updated!
+
 ## Features
 
 - **Full Model Support**: Access to all Grok models (grok-2-latest, grok-3, grok-3-reasoner, grok-3-deepsearch, grok-3-mini-beta)
