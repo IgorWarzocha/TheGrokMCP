@@ -1,6 +1,6 @@
 # Grok MCP Server 🚀
 
-A production-ready Model Context Protocol (MCP) server for Grok AI models, built with FastMCP for clean, Pythonic implementation.
+A production-ready Model Context Protocol (MCP) server for Grok AI models, built with FastMCP for clean, Pythonic implementation. Developed using my own [Superprompt System](https://github.com/IgorWarzocha/Claude-Superprompt-System)
 
 ## Features
 
